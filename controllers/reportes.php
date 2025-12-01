@@ -319,6 +319,7 @@ function generarPDFEstudiantes($conn)
 }
 
 
+
 // ====================================================
 //  ✅ REPORTE EXCEL DE TODOS LOS ESTUDIANTES (PhpSpreadsheet)
 // ====================================================
