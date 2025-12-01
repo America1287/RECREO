@@ -10,139 +10,258 @@ $nombre = $_SESSION['nombre'];
 $rol = $_SESSION['rol_id'];
 ?>
 
-<h2>Bienvenido, <?= htmlspecialchars($nombre) ?></h2>
-<p>Rol: 
-    <?php
-        if ($rol == 1) echo "Administrador";
-        elseif ($rol == 2) echo "Docente";
-        elseif ($rol == 3) echo "Director";
-        elseif ($rol == 4) echo "Estudiante";
-    ?>
-</p>
+<!DOCTYPE html>
+<html lang="es">
 
-<hr>
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard - Sistema Recreo</title>
+    <link rel="stylesheet" href="../public/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
 
-<!-- MENÚ DINÁMICO SEGÚN ROL -->
-<?php if ($rol == 1): ?>
-    <h3>Menú Administrador</h3>
-    <a href="../controllers/estudiantes.php?action=index">Gestionar Estudiantes</a><br>
-    <a href="#">Gestionar Usuarios (próximamente)</a><br>
-    <a href="/recreo/controllers/faltas.php?action=index">Gestionar Faltas</a><br>
-    <a href="../controllers/alertas.php?action=index">Ver Alertas</a><br>
+</head>
 
-<?php elseif ($rol == 2): ?>
-    <h3>Menú Docente</h3>
-    <a href="../controllers/estudiantes.php?action=index">Ver Estudiantes</a><br>
-    <a href="/recreo/controllers/faltas.php?action=index">Registrar Faltas</a><br>
-    <a href="../controllers/alertas.php?action=index">Ver Alertas</a><br>
+<body>
 
-<?php elseif ($rol == 3): ?>
-    <h3>Menú Director</h3>
-    <a href="../controllers/estudiantes.php?action=index">Ver Estudiantes</a><br>
-    <a href="#">Reportes de Faltas (próximamente)</a><br>
+    <header class="encabezado">
+        <p>
+        <h1>Bienvenido, <?= htmlspecialchars($nombre, ENT_QUOTES, 'UTF-8') ?></h1>
+        </p>
+        <div>
+            <p>Rol:
+                <?php
+                if ($rol == 1) echo "Administrador";
+                elseif ($rol == 2) echo "Docente";
+                elseif ($rol == 3) echo "Director";
+                elseif ($rol == 4) echo "Estudiante";
+                ?>
+            </p>
+        </div>
+    </header>
 
-<?php elseif ($rol == 4): ?>
-    <h3>Menú Estudiante</h3>
-    <a href="#">Mi historial de faltas (próximamente)</a><br>
+    <section id="contenedor2">
+        <div class="alineacion2" id="lado1">
+            <!-- MENÚ DINÁMICO SEGÚN ROL -->
+            <?php if ($rol == 1): ?>
+                <h3>Menú Administrador</h3>
+                <div class="organizacion">
+                    <a href="../controllers/estudiantes.php"><button class="submenu"><img src="../imagenes/student (1).svg" alt="Gestionar estudiantes" width="50px"></button></a>
+                    <p>Gestionar<br> Estudiantes</p>
+                    <br>
+                </div>
+                <div class="organizacion">
+                    <a href="/recreo/controllers/usuarios.php?action=index"><button class="submenu"><img src="../imagenes/user-switch.svg" alt="Gestionar estudiantes" width="50px"></button></a>
+                    <p>Gestionar<br> Usuarios</p>
+                    <br>
+                </div>
+                <div class="organizacion">
+                    <a href="/recreo/controllers/faltas.php?action=index"><button class="submenu"><img src="../imagenes/note-pencil.svg" alt="Gestionar estudiantes" width="50px"></button></a>
+                    <p>Gestionar<br> Faltas</p>
+                    <br>
+                </div>
+                <div class="organizacion">
+                    <a href="/recreo/controllers/alertas.php?action=index"><button class="submenu"><img src="../imagenes/file-magnifying-glass.svg" alt="Gestionar estudiantes" width="50px"></button></a>
+                    <p>Ver<br> Alertas</p>
+                    <br>
+                </div>
 
-<?php endif; ?>
+            <?php elseif ($rol == 2): ?>
+                <h3>Menú Docente</h3>
+                <div class="organizacion">
+                    <a href="/recreo/controllers/estudiantes.php?action=index"><button class="submenu"><img src="../imagenes/student (1).svg" alt="Gestionar estudiantes" width="50px"></button></a>
+                    <p>Ver<br> Estudiantes</p>
+                    <br>
+                </div>
+                <div class="organizacion">
+                    <a href="/recreo/controllers/faltas.php?action=index"><button class="submenu"><img src="../imagenes/student (1).svg" alt="Gestionar estudiantes" width="50px"></button></a>
+                    <p>Registrar<br> Faltas</p>
+                    <br>
+                </div>
+                <div class="organizacion">
+                    <a href="/recreo/controllers/alertas.php?action=index"><button class="submenu"><img src="../imagenes/student (1).svg" alt="Gestionar estudiantes" width="50px"></button></a>
+                    <p>Ver<br> Alertas</p>
+                    <br>
+                </div>
 
-<!-- SECCIÓN DE ALERTAS (Solo para Admin, Docente y Director) -->
-<?php if ($_SESSION['rol_id'] == 1 || $_SESSION['rol_id'] == 2 || $_SESSION['rol_id'] == 3): ?>
+            <?php elseif ($rol == 3): ?>
+                <h3>Menú Director</h3>
+                <div class="organizacion">
+                    <a href="/recreo/controllers/estudiantes.php?action=index"><button class="submenu"><img src="../imagenes/student (1).svg" alt="Gestionar estudiantes" width="50px"></button></a>
+                    <p>Ver<br> Estudiantes</p>
+                    <br>
+                </div>
+                <div class="organizacion">
+                    <a href="/recreo/controllers/faltas.php?action=index"><button class="submenu"><img src="../imagenes/student (1).svg" alt="Gestionar estudiantes" width="50px"></button></a>
+                    <p>Ver<br> Faltas</p>
+                    <br>
+                </div>
+                <div class="organizacion">
+                    <a href="/recreo/controllers/alertas.php?action=index"><button class="submenu"><img src="../imagenes/student (1).svg" alt="Gestionar estudiantes" width="50px"></button></a>
+                    <p>Ver<br> Alertas</p>
+                    <br>
+                </div>
 
-<hr>
-<h2>Alertas Generadas</h2>
+            <?php elseif ($rol == 4): ?>
+                <h3>Menú Estudiante</h3>
+                <div class="organizacion">
+                    <a href="#"><button class="submenu"><img src="../imagenes/student (1).svg" alt="Gestionar estudiantes" width="50px"></button></a>
+                    <p>Mi historial de faltas</p>
+                    <br>
+                </div>
 
-<!-- ✅ FILTRO POR CATEGORÍA -->
-<form method="GET" action="">
-    <label>Filtrar por categoría:</label>
-    <select name="tipo" onchange="this.form.submit()">
-        <option value="">Todas</option>
-        <option value="Tipo 1" <?= (isset($_GET['tipo']) && $_GET['tipo']=='Tipo 1')?'selected':'' ?>>Tipo 1</option>
-        <option value="Tipo 2" <?= (isset($_GET['tipo']) && $_GET['tipo']=='Tipo 2')?'selected':'' ?>>Tipo 2</option>
-        <option value="Tipo 3" <?= (isset($_GET['tipo']) && $_GET['tipo']=='Tipo 3')?'selected':'' ?>>Tipo 3</option>
-    </select>
-</form>
-<br>
+            <?php endif; ?>
+            <br><br>
+            <a class="boton" href="/recreo/controllers/logout.php">Cerrar sesión</a>
+        </div>
 
-<form method="GET" action="dashboard.php">
-    <label>Tipo:</label>
-    <select name="tipo">
-        <option value="">Todos</option>
-        <option value="Tipo 1">Tipo 1</option>
-        <option value="Tipo 2">Tipo 2</option>
-        <option value="Tipo 3">Tipo 3</option>
-    </select>
+        <div class="alineacion2" id="central">
 
-    <label>Desde:</label>
-    <input type="date" name="fecha_inicio">
+            <!-- SECCIÓN DE ALERTAS (Solo para Admin, Docente y Director) -->
+            <?php if (in_array($_SESSION['rol_id'], [1, 2, 3])): ?>
 
-    <label>Hasta:</label>
-    <input type="date" name="fecha_fin">
+                <h3>Alertas Generadas</h3>
 
-    <button type="submit">Filtrar</button>
-</form>
+                <div class="container">
+
+                    <!-- ✅ FILTRO POR CATEGORÍA Y FECHAS -->
+                    <form method="GET" action="" style="font-size: small; text-align: left;">
+                        <label>Tipo:</label>
+                        <select name="tipo">
+                            <option value="">Todos</option>
+                            <option value="Tipo 1" <?= (isset($_GET['tipo']) && $_GET['tipo'] == 'Tipo 1') ? 'selected' : '' ?>>Tipo 1</option>
+                            <option value="Tipo 2" <?= (isset($_GET['tipo']) && $_GET['tipo'] == 'Tipo 2') ? 'selected' : '' ?>>Tipo 2</option>
+                            <option value="Tipo 3" <?= (isset($_GET['tipo']) && $_GET['tipo'] == 'Tipo 3') ? 'selected' : '' ?>>Tipo 3</option>
+                        </select>
+
+                        <label>Desde:</label>
+                        <input type="date" name="fecha_inicio" value="<?= $_GET['fecha_inicio'] ?? '' ?>">
+
+                        <label>Hasta:</label>
+                        <input type="date" name="fecha_fin" value="<?= $_GET['fecha_fin'] ?? '' ?>">
+
+                        <button type="submit">Filtrar</button>
+                        <a href="dashboard.php">Limpiar filtros</a>
+                    </form>
+
+                </div>
+
+                <br>
+
+                <?php
+                // ✅ Cargar conexión y funciones
+                require_once "../config/database.php";
+                require_once "../config/functions.php";
+
+                // ✅ Obtener filtros
+                $tipo = $_GET['tipo'] ?? null;
+                $fecha_inicio = $_GET['fecha_inicio'] ?? null;
+                $fecha_fin = $_GET['fecha_fin'] ?? null;
+
+                // ✅ Obtener alertas filtradas
+                $alertas = getAlertasPorFiltro($conn, $tipo, $fecha_inicio, $fecha_fin);
+
+                if ($alertas->num_rows > 0):
+                ?>
+                    <table border="1" cellspacing="0" cellpadding="5" style="font-size: small; align-items: center;" ;>
+                        <tr>
+                            <th>Estudiante</th>
+                            <th>Apellido</th>
+                            <th>Tipo</th>
+                            <th>Mensaje</th>
+                            <th>Fecha</th>
+                        </tr>
+
+                        <?php while ($a = $alertas->fetch_assoc()): ?>
+                            <tr>
+                                <td><?= htmlspecialchars($a['nombre'], ENT_QUOTES, 'UTF-8') ?></td>
+                                <td><?= htmlspecialchars($a['apellido'], ENT_QUOTES, 'UTF-8') ?></td>
+                                <td><?= htmlspecialchars($a['tipo'], ENT_QUOTES, 'UTF-8') ?></td>
+                                <td><?= htmlspecialchars($a['mensaje'], ENT_QUOTES, 'UTF-8') ?></td>
+                                <td><?= htmlspecialchars($a['fecha'], ENT_QUOTES, 'UTF-8') ?></td>
+                            </tr>
+                        <?php endwhile; ?>
+                    </table>
+
+                <?php else: ?>
+                    <p>No hay alertas generadas<?= $tipo ? ' para los filtros seleccionados' : '' ?></p>
+                <?php endif; ?>
 
 
-<?php
-// ✅ Cargar conexión y funciones
-require_once "../config/database.php";
-require_once "../config/functions.php";
+        </div>
+        <hr>
+        <div class="alineacion" id="lado2">
+            <!-- ✅ SECCIÓN DE REPORTES -->
+            <h3>Generar Reportes</h3>
 
-// ✅ Obtener filtro y alertas usando la función
-$tipo = isset($_GET['tipo']) ? $_GET['tipo'] : '';
-// $alertas = getAlertas($conn, $tipo);
-
-$tipo = $_GET['tipo'] ?? null;
-$fecha_inicio = $_GET['fecha_inicio'] ?? null;
-$fecha_fin = $_GET['fecha_fin'] ?? null;
-
-$alertas = getAlertasPorFiltro($conn, $tipo, $fecha_inicio, $fecha_fin);
+            <?php
+                // Obtener filtros activos para los reportes
+                $categoria = isset($_GET['tipo']) ? $_GET['tipo'] : '';
+                $desde     = isset($_GET['fecha_inicio']) ? $_GET['fecha_inicio'] : '';
+                $hasta     = isset($_GET['fecha_fin']) ? $_GET['fecha_fin'] : '';
+            ?>
 
 
-if ($alertas->num_rows > 0):
-?>
-    <table border="1" cellspacing="0" cellpadding="5">
-        <tr>
-            <th>Estudiante</th>
-            <th>Tipo</th>
-            <th>Mensaje</th>
-            <th>Fecha</th>
-        </tr>
+            <h4>Reportes de Estudiantes:</h4>
 
-        <?php while($a = $alertas->fetch_assoc()): ?>
-            <tr>
-                <td><?= htmlspecialchars($a['nombre']) ?></td>
-                <td><?= htmlspecialchars($a['tipo']) ?></td>
-                <td><?= htmlspecialchars($a['mensaje']) ?></td>
-                <td><?= htmlspecialchars($a['fecha']) ?></td>
-            </tr>
-        <?php endwhile; ?>
+            <!-- Reporte PDF de Estudiantes -->
+            <div class="organizacion">
+                <a href="/recreo/controllers/reportes.php?action=pdf_estudiantes"
+                    class="btn btn-danger"
+                    target="_blank">
+                    📄
+                </a>
+                <p style="font-size: 12px;">PDF de <br>Estudiantes</p>
+            </div>
 
-    </table>
+            <!-- ✅ Reporte EXCEL de Estudiantes -->
+            <div class="organizacion">
+                <a href="/recreo/controllers/reportes.php?action=excel_estudiantes"
+                    class="btn btn-success"
+                    target="_blank">
+                    📊
+                </a>
+                <p style="font-size: 12px;">Excel de <br>Estudiantes</p>
+            </div>
+            <br>
+            <br>
 
-<?php else: ?>
-    <p>No hay alertas generadas<?= $tipo ? ' para la categoría seleccionada' : '' ?>.</p>
-<?php endif; ?>
 
-<?php endif; ?>
 
-<?php
-    // Obtener filtros activos
-    $categoria = isset($_GET['tipo']) ? $_GET['tipo'] : '';
-    $desde     = isset($_GET['desde']) ? $_GET['desde'] : '';
-    $hasta     = isset($_GET['hasta']) ? $_GET['hasta'] : '';
-?>
+            <h4>Reportes de Faltas (con filtros aplicados):</h4>
 
-<a href="../controllers/reportes.php?tipo=pdf&categoria=<?php echo $categoria ?>&desde=<?php echo $desde ?>&hasta=<?php echo $hasta ?>" class="btn">
-    Descargar PDF
-</a>
-<br>
+            <!-- Reporte PDF de Faltas -->
+            <div class="organizacion">
+                <a href="/recreo/controllers/reportes.php?tipo=pdf&categoria=<?= urlencode($categoria) ?>&desde=<?= urlencode($desde) ?>&hasta=<?= urlencode($hasta) ?>"
+                    class="btn btn-danger"
+                    target="_blank">
+                    📄
+                </a>
+                <p style="font-size: 12px;">PDF de <br>Faltas</p>
+            </div>
 
-<a href="../controllers/reportes.php?tipo=excel&categoria=<?php echo $categoria ?>&desde=<?php echo $desde ?>&hasta=<?php echo $hasta ?>" class="btn">
-    Descargar Excel
-</a>
-<br>
+            <!-- Reporte Excel de Faltas -->
+            <div class="organizacion">
+                <a href="/recreo/controllers/reportes.php?tipo=excel&categoria=<?= urlencode($categoria) ?>&desde=<?= urlencode($desde) ?>&hasta=<?= urlencode($hasta) ?>"
+                    class="btn btn-success"
+                    target="_blank">
+                    📊
+                </a>
+                <p style="font-size: 12px;">Excel de <br> Faltas</p>
+            </div>
 
-<br>
-<a href="../controllers/logout.php">Cerrar sesión</a>
+        <?php endif; ?>
+        </div>
+
+    </section>
+</body>
+<footer>
+    <p>Institución Educativa Compartir &copy; 2025</p>
+    <address>
+        <p>Cl. 26 Sur #3c Sur10 No 5B Soacha, Cundinamarca</p>
+    </address>
+    <p>Software y Soluciones B.O.</p>
+</footer>
+
+</html>

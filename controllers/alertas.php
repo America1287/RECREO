@@ -1,7 +1,6 @@
 <?php
 session_start();
 require_once "../config/database.php";
-// $result = getAlertas($conn);
 
 if (!isset($_SESSION['user_id'])) {
     header("Location: /recreo/views/login.php");
@@ -15,7 +14,10 @@ $action = $_GET['action'] ?? 'index';
 // -----------------------------------------------------
 if ($action == "index") {
 
-    $sql = "SELECT alertas.*, estudiantes.nombre AS estudiante
+    // ✅ Incluir apellido en la consulta
+    $sql = "SELECT alertas.*, 
+                   estudiantes.nombre AS estudiante_nombre,
+                   estudiantes.apellido AS estudiante_apellido
             FROM alertas
             JOIN estudiantes ON alertas.estudiante_id = estudiantes.id
             ORDER BY fecha DESC";
@@ -25,6 +27,7 @@ if ($action == "index") {
     include "../views/alertas/index.php";
     exit;
 }
+
 
 // -----------------------------------------------------
 // ELIMINAR ALERTA
@@ -49,4 +52,3 @@ if ($action == "delete") {
         die("Error al eliminar la alerta");
     }
 }
-?>

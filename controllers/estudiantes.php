@@ -23,16 +23,18 @@ if ($action === 'create') {
 
 if ($action === 'store') {
     // Validar que existen los datos
-    if (empty($_POST['nombre']) || empty($_POST['grado'])) {
+    if (empty($_POST['nombre']) || empty($_POST['apellido']) || empty($_POST['grado'] ) || empty($_POST['documento'])) {
         die("Todos los campos son obligatorios");
     }
     
     $nombre = $_POST['nombre'];
+    $apellido = $_POST['apellido'];
     $grado = $_POST['grado'];
+    $documento = $_POST['documento'];
 
     // ✅ Usar consultas preparadas (SEGURO)
-    $stmt = $conn->prepare("INSERT INTO estudiantes (nombre, grado) VALUES (?, ?)");
-    $stmt->bind_param("ss", $nombre, $grado);
+    $stmt = $conn->prepare("INSERT INTO estudiantes (nombre, apellido, grado, documento) VALUES (?, ?, ?, ?)");
+    $stmt->bind_param("sssi", $nombre, $apellido, $grado, $documento);
     
     if ($stmt->execute()) {
         header("Location: /recreo/controllers/estudiantes.php?action=index");
@@ -67,17 +69,19 @@ if ($action === 'edit') {
 
 if ($action === 'update') {
     // Validar datos
-    if (empty($_POST['id']) || empty($_POST['nombre']) || empty($_POST['grado'])) {
+    if (empty($_POST['id']) || empty($_POST['nombre']) || empty($_POST['apellido']) || empty($_POST['grado']) || empty($_POST['documento'])) {
         die("Todos los campos son obligatorios");
     }
     
     $id = (int)$_POST['id'];
     $nombre = $_POST['nombre'];
+    $apellido = $_POST['apellido'];
     $grado = $_POST['grado'];
+    $documento = $_POST['documento'];
 
     // ✅ Consulta preparada
-    $stmt = $conn->prepare("UPDATE estudiantes SET nombre = ?, grado = ? WHERE id = ?");
-    $stmt->bind_param("ssi", $nombre, $grado, $id);
+    $stmt = $conn->prepare("UPDATE estudiantes SET nombre = ?, apellido=?, grado = ?, documento = ? WHERE id = ?");
+    $stmt->bind_param("sssii", $nombre, $apellido, $grado, $documento, $id);
     
     if ($stmt->execute()) {
         header("Location: /recreo/controllers/estudiantes.php?action=index");

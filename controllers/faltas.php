@@ -14,12 +14,12 @@ $action = $_GET['action'] ?? 'index';
 // LISTAR FALTAS (CON FILTRO OPCIONAL)
 // -------------------------------------------------------------
 if ($action == "index") {
-    
+
     $filtro = isset($_GET['tipo']) ? $_GET['tipo'] : '';
 
     if ($filtro != '') {
-        // Consulta con filtro (preparada)
-        $stmt = $conn->prepare("SELECT f.*, e.nombre AS estudiante_nombre 
+        // Consulta con filtro (preparada) - ✅ Incluye apellido
+        $stmt = $conn->prepare("SELECT f.*, e.nombre AS estudiante_nombre, e.apellido AS estudiante_apellido 
                                 FROM faltas f 
                                 JOIN estudiantes e ON f.estudiante_id = e.id 
                                 WHERE f.tipo = ?
@@ -28,8 +28,8 @@ if ($action == "index") {
         $stmt->execute();
         $result = $stmt->get_result();
     } else {
-        // Consulta sin filtro
-        $sql = "SELECT f.*, e.nombre AS estudiante_nombre 
+        // Consulta sin filtro - ✅ Incluye apellido
+        $sql = "SELECT f.*, e.nombre AS estudiante_nombre, e.apellido AS estudiante_apellido 
                 FROM faltas f 
                 JOIN estudiantes e ON f.estudiante_id = e.id
                 ORDER BY f.fecha DESC";
@@ -46,7 +46,7 @@ if ($action == "index") {
 if ($action == "create") {
 
     // Obtener listado de estudiantes
-    $estudiantes = $conn->query("SELECT * FROM estudiantes");
+    $estudiantes = $conn->query("SELECT * FROM estudiantes ORDER BY nombre ASC");
 
     include "../views/faltas/create.php";
     exit;
@@ -69,7 +69,7 @@ if ($action == "store") {
     // 1. ✅ Guardar falta con consulta preparada
     $stmt = $conn->prepare("INSERT INTO faltas (estudiante_id, tipo, descripcion) VALUES (?, ?, ?)");
     $stmt->bind_param("iss", $estudiante_id, $tipo, $descripcion);
-    
+
     if (!$stmt->execute()) {
         die("Error al crear la falta");
     }
@@ -96,7 +96,7 @@ if ($action == "store") {
         $checkResult = $stmtCheck->get_result();
 
         if ($checkResult->num_rows == 0) {
-            
+
             // Crear alerta nueva
             $mensaje = "El estudiante ha acumulado $total_faltas_tipo faltas de tipo: $tipo";
 
@@ -104,9 +104,8 @@ if ($action == "store") {
                                           VALUES (?, ?, ?, ?)");
             $stmtInsert->bind_param("issi", $estudiante_id, $tipo, $mensaje, $total_faltas_tipo);
             $stmtInsert->execute();
-
         } else {
-            
+
             // Actualizar alerta existente
             $mensaje = "El estudiante ha acumulado $total_faltas_tipo faltas de tipo: $tipo";
 
@@ -149,7 +148,7 @@ if ($action == "edit") {
         die("Falta no encontrada");
     }
 
-    $estudiantes = $conn->query("SELECT * FROM estudiantes");
+    $estudiantes = $conn->query("SELECT * FROM estudiantes ORDER BY nombre ASC");
 
     include "../views/faltas/edit.php";
     exit;
@@ -205,7 +204,3 @@ if ($action == "delete") {
         die("Error al eliminar la falta");
     }
 }
-
-
-?>
-

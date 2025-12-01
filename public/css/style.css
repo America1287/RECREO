@@ -1,0 +1,574 @@
+/* --------- ESTILOS GENERALES --------- */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: linear-gradient(90deg, #5de0e6, #004aad);
+  font-family: "Open Sans", sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  min-height: 100vh;
+  box-sizing: border-box;
+}
+
+h1,
+h3 {
+  color: white;
+  text-align: center;
+  margin: 0.5em 0;
+}
+
+h1 {
+  font-size: 1.6rem;
+}
+
+h2 {
+  color: #333;
+  border-bottom: 3px solid #0275d8;
+  padding-bottom: 10px;
+}
+
+h3 {
+  font-size: 1.2rem;
+}
+
+article {
+  color: black;
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+a:visited {
+  color: white;
+}
+
+a {
+  font-size: small;
+  display: inline-block;
+  display: block;
+  margin-top: 15px;
+  text-align: center;
+  color: #0275d8;
+  text-decoration: none;
+}
+
+th,
+td {
+  background: whitesmoke;
+  color: black;
+  padding: 12px;
+  border: 1px solid #ddd;
+  text-align: left;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+th {
+  background: #0275d8;
+  color: white;
+  font-weight: bold;
+}
+
+tr:nth-child(even) {
+  background: #f9f9f9;
+}
+
+tr:hover {
+  background: #f0f0f0;
+}
+
+label {
+  display: block;
+  margin-top: 15px;
+  font-weight: bold;
+  color: #555;
+}
+
+input,
+select {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+input:focus,
+select:focus {
+  outline: none;
+  border-color: #0275d8;
+}
+
+button {
+  margin-top: 20px;
+  padding: 12px 20px;
+  background: #0275d8;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 100%;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+button:hover {
+  background: #025aa5;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* --------- ENCABEZADOS Y TEXTOS --------- */
+
+#inicio,
+#lema {
+  text-align: center;
+  margin: 0 auto;
+}
+
+#inicio {
+  color: #f2ce1b;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+#lema {
+  font-style: italic;
+  font-size: 15px;
+  color: #666;
+}
+
+#nombresoft {
+  color: white;
+  font-weight: 400;
+  padding: 10px 25px;
+  text-align: center;
+}
+
+#nombresoft strong {
+  font-size: 18px;
+  display: block;
+  margin-bottom: 10px;
+  color: #444;
+}
+
+.encabezado {
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+/* --------- IMÁGENES Y LOGOS --------- */
+
+.escudo,
+.puerta {
+  display: block;
+  margin: 0 auto;
+  max-width: 100%;
+  height: auto;
+}
+
+.escudo {
+  width: 120px;
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+
+/* --------- BOTONES --------- */
+
+.ingreso,
+#logeo {
+  color: white;
+  background-color: #1da1f2;
+  border: 1px solid #2291f2;
+  border-radius: 25px;
+  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+  padding: 15px 25px;
+  margin: 20px auto;
+  display: flex;
+  max-width: 80%;
+  max-width: 200px;
+  transition: background-color 0.3s ease;
+  font-size: 1rem;
+  text-align: center;
+  font-weight: bold;
+  position: relative;
+  width: fit-content;
+}
+
+#logeo2 {
+  color: white;
+  background-color: #1da1f2;
+  border: 1px solid #2291f2;
+  border-radius: 25px;
+  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+  padding: 15px 25px;
+  margin: 10px auto;
+  display: flex;
+  max-width: 80%;
+  max-width: 200px;
+  transition: background-color 0.3s ease;
+  font-size: 0.8rem;
+  text-align: center;
+  font-weight: bold;
+  position: relative;
+  width: fit-content;
+}
+
+.boton {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+  text-align: center;
+  font-size: 16px;
+}
+
+.button {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #4caf50;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+}
+
+button:hover,
+#logeo:hover,
+.ingreso:hover,
+.boton:hover {
+  background-color: #d91e1e;
+  border-color: #d91e1e;
+}
+
+/* --------- MENÚ Y CONTENEDORES --------- */
+
+#menu {
+  font-size: 1.3rem;
+  color: white;
+  background-color: #2291f2;
+  width: 90%;
+  max-width: 510px;
+  padding: 10px;
+  margin: 10px auto;
+  text-align: center;
+  border-radius: 10px;
+}
+
+#content {
+  max-width: 300px;
+  width: 90%;
+  padding: 10px;
+  border-radius: 25px;
+  background-color: #dcf2f0;
+  margin: 0 auto;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+#content2 {
+  max-width: 300px;
+  width: 90%;
+  padding: 10px;
+  border-radius: 25px;
+  background-color: #dcf2f0;
+  margin: 20px auto;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+.login {
+  background-color: #dcf2f0;
+  text-align: center;
+  margin: 0 auto;
+  /* padding: 20px; */
+  border-radius: 15px;
+  width: 90%;
+}
+
+/* --------- DISTRIBUCIÓN Y FLEX --------- */
+
+#contenedor {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  box-sizing: border-box;
+}
+
+#contenedor2 {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  /* justify-content: center; */
+  min-height: 60vh;
+  box-sizing: border-box;
+}
+
+#lado1,
+#central,
+#lado2 {
+  padding: 10px;
+  margin: 10px;
+  box-sizing: border-box;
+}
+
+#lado1,
+#lado2 {
+  width: 20%;
+}
+
+#central {
+  width: 50%;
+}
+
+#principal {
+  width: 66.66%;
+  height: auto;
+  background-color: #dcf2f0;
+  border-radius: 15px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  /* padding: 20px; */
+  text-align: center;
+  max-width: 320px;
+  width: 100%;
+}
+
+/* --------- ALINEACIÓN Y SUBMENÚ --------- */
+
+.alineacion,
+.alineacion2 {
+  color: white;
+  text-align: center;
+  padding: 20px 0;
+  /* margin: 0 auto; */
+}
+
+.submenu {
+  background: linear-gradient(#f2ce1b, #d91e1e);
+}
+
+.organizacion {
+  font-size: 0.9rem;
+  text-align: center;
+  width: 90px;
+  display: inline-block;
+  margin: 0 auto;
+}
+
+/* --------- ICONOS --------- */
+
+#icon1 {
+  display: inline-block;
+  position: relative;
+  top: 5px;
+}
+
+#icon2,
+#icon3 {
+  display: inline-block;
+  position: relative;
+  top: 5px;
+  margin: 0 10px;
+}
+
+.card {
+  background: white;
+  padding: 2em;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  max-width: 500px;
+  margin: auto;
+  text-align: center;
+}
+
+.card h2 {
+  color: #333;
+}
+
+.logout-btn {
+  margin-top: 20px;
+  background-color: #dc3545;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.logout-btn:hover {
+  background-color: #c82333;
+}
+
+/* --------- FOOTER --------- */
+
+footer {
+  color: #5de0e6;
+  opacity: 0.5;
+  margin-top: 20px;
+  text-align: center;
+  font-size: 0.8rem;
+}
+
+/* --------- MEDIA QUERIES --------- */
+
+@media screen and (max-width: 768px) {
+  #menu {
+    font-size: 1rem;
+    width: 95%;
+  }
+
+  #content,
+  .login {
+    width: 95%;
+  }
+
+  #contenedor,
+  #contenedor2 {
+    flex-direction: column;
+  }
+
+  #lado1,
+  #central,
+  #lado2,
+  #sidebar {
+    width: 100%;
+    height: auto;
+  }
+
+  .ingreso,
+  #logeo {
+    max-width: 90%;
+  }
+}
+
+@media (max-width: 600px) {
+  #principal {
+    padding: 20px;
+  }
+
+  .boton {
+    width: 100%;
+    font-size: 16px;
+  }
+}
+
+.btn {
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  display: inline-block;
+  padding: 8px 15px;
+  background: #0275d8;
+  border-radius: 5px;
+  margin: 5px 2px;
+}
+
+.btn:hover {
+  background-color: #0056b3;
+}
+
+.btn-danger {
+  background-color: #dc3545;
+}
+
+.btn-danger:hover {
+  background-color: #c82333;
+}
+
+.btn-success {
+  background-color: #28a745;
+}
+
+.btn-success:hover {
+  background-color: #218838;
+}
+
+.btn-warning {
+  background-color: rgb(220, 200, 24);
+}
+
+.btn-warning:hover {
+  background-color: rgb(220, 161, 24);
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.container2 {
+  max-width: 500px;
+  margin: 0 auto;
+  background: white;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.badge {
+  display: inline-block;
+  padding: 4px 8px;
+  border-radius: 3px;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.badge-admin {
+  background: #d9534f;
+  color: white;
+}
+
+.badge-docente {
+  background: #5bc0de;
+  color: white;
+}
+
+.badge-director {
+  background: #f0ad4e;
+  color: white;
+}
+
+.badge-estudiante {
+  background: #5cb85c;
+  color: white;
+}
+
+.required {
+  color: red;
+}
+
+.info {
+  background: #d9edf7;
+  padding: 10px;
+  border-left: 4px solid #31b0d5;
+  margin-top: 5px;
+  font-size: 14px;
+  color: #31708f;
+}
